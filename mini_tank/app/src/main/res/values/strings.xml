@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">mini_tank</string>
+    <string name="toggle_motion_sensor">Motion Sensor</string>
+</resources>

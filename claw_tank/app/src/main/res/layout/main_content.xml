@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ToggleButton
+        android:id="@+id/claw_servo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/left_servo"
+        android:layout_centerHorizontal="true"
+        android:text="@string/claw"
+        android:textOff="@string/off"
+        android:textOn="@string/claw" />
+
+    <ToggleButton
+        android:id="@+id/left_servo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/right_servo"
+        android:layout_alignBottom="@+id/right_servo"
+        android:layout_toStartOf="@+id/claw_servo"
+        android:text="@string/left"
+        android:textOff="@string/off"
+        android:textOn="@string/left" />
+
+    <ToggleButton
+        android:id="@+id/right_servo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/base_servo"
+        android:layout_marginBottom="48dp"
+        android:layout_toEndOf="@+id/base_servo"
+        android:text="@string/right"
+        android:textOff="@string/off"
+        android:textOn="@string/right" />
+
+    <ToggleButton
+        android:id="@+id/base_servo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/motors"
+        android:layout_marginBottom="19dp"
+        android:layout_toEndOf="@+id/left_servo"
+        android:text="@string/base"
+        android:textOff="@string/off"
+        android:textOn="@string/base" />
+
+    <ToggleButton
+        android:id="@+id/motors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/arrow_left"
+        android:layout_alignStart="@+id/base_servo"
+        android:text="@string/motor"
+        android:textOff="@string/off"
+        android:textOn="@string/motor" />
+
+    <SeekBar
+        android:id="@+id/speed_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="20dp"
+        android:max="180"
+        android:progress="90" />
+
+    <TextView
+        android:id="@+id/pwm_or_angle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/speed_bar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="24dp"
+        android:text="@string/angle" />
+
+    <ImageView
+        android:id="@+id/arrow_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/pwm_or_angle"
+        android:layout_alignParentEnd="true"
+        android:clickable="true"
+        android:src="@drawable/arrow" />
+
+    <ImageView
+        android:id="@+id/arrow_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/right_servo"
+        android:layout_alignTop="@+id/arrow_right"
+        android:clickable="true"
+        android:rotation="180"
+        android:src="@drawable/arrow" />
+
+    <ImageView
+        android:id="@+id/arrow_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/base_servo"
+        android:layout_marginStart="12dp"
+        android:clickable="true"
+        android:rotation="270"
+        android:src="@drawable/arrow" />
+
+    <ImageView
+        android:id="@+id/arrow_down"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/pwm_or_angle"
+        android:layout_alignStart="@+id/arrow_up"
+        android:clickable="true"
+        android:rotation="90"
+        android:src="@drawable/arrow" />
+
+    <ImageView
+        android:id="@+id/arrow_top_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/arrow_bottom_right"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="24dp"
+        android:clickable="true"
+        android:rotation="315"
+        android:src="@drawable/arrow" />
+
+    <ImageView
+        android:id="@+id/arrow_top_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/arrow_bottom_left"
+        android:layout_alignTop="@+id/arrow_top_right"
+        android:clickable="true"
+        android:rotation="225"
+        android:src="@drawable/arrow" />
+
+    <ImageView
+        android:id="@+id/arrow_bottom_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/right_servo"
+        android:layout_alignTop="@+id/arrow_bottom_right"
+        android:layout_marginEnd="17dp"
+        android:clickable="true"
+        android:rotation="135"
+        android:src="@drawable/arrow" />
+
+    <ImageView
+        android:id="@+id/arrow_bottom_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/right_servo"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="28dp"
+        android:clickable="true"
+        android:rotation="45"
+        android:src="@drawable/arrow" />
+</RelativeLayout>

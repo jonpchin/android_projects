@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false">
+
+    <TextView
+        android:id="@+id/textSpeed"
+        android:layout_margin="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Speed:" />
+
+    <TextView
+        android:id="@+id/btMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/arrow_up"
+        android:layout_below="@+id/speedBar"
+        android:layout_marginTop="70dp"
+        android:text="Distance:" />
+
+    <SeekBar
+        android:id="@+id/speedBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textSpeed"
+        android:max="255"
+        android:progress="255" />
+
+    <ImageView
+        android:id="@+id/arrow_up"
+        android:rotation="270"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:src="@drawable/arrow"
+        android:clickable="true"
+        android:layout_above="@+id/arrow_left"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="24dp" />
+
+    <ImageView
+        android:id="@+id/arrow_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:src="@drawable/arrow"
+        android:layout_marginEnd="39dp"
+        android:layout_above="@+id/arrow_back"
+        android:layout_alignParentEnd="true" />
+
+    <ImageView
+        android:id="@+id/arrow_back"
+        android:rotation="90"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:src="@drawable/arrow"
+        android:clickable="true"
+        android:layout_marginBottom="14dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/arrow_up" />
+    <ImageView
+        android:id="@+id/arrow_left"
+        android:rotation="180"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:src="@drawable/arrow"
+        android:clickable="true"
+        android:layout_alignTop="@+id/arrow_right"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp" />
+    <ImageView
+        android:id="@+id/top_left"
+        android:rotation="225"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:src="@drawable/arrow"
+        android:clickable="true"
+        android:layout_alignTop="@+id/top_right"
+        android:layout_alignStart="@+id/bottom_left" />
+    <ImageView
+        android:id="@+id/top_right"
+        android:rotation="315"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:src="@drawable/arrow"
+        android:clickable="true"
+        android:layout_marginStart="12dp"
+        android:layout_above="@+id/arrow_right"
+        android:layout_toEndOf="@+id/arrow_up"
+        android:layout_marginBottom="11dp" />
+    <ImageView
+        android:id="@+id/bottom_right"
+        android:rotation="45"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:src="@drawable/arrow"
+        android:clickable="true"
+        android:layout_below="@+id/arrow_right"
+        android:layout_toEndOf="@+id/arrow_back" />
+    <ImageView
+        android:id="@+id/bottom_left"
+        android:rotation="135"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:src="@drawable/arrow"
+        android:clickable="true"
+        android:layout_below="@+id/arrow_left"
+        android:layout_toStartOf="@+id/arrow_back"
+        android:layout_marginEnd="12dp" />
+
+    <ToggleButton
+        android:id="@+id/toggleSensor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/arrow_up"
+        android:layout_below="@+id/btMessage"
+        android:layout_marginTop="23dp"
+        android:text="Toggle Sensor" />
+
+</RelativeLayout>

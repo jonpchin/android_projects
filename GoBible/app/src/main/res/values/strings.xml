@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Go Bible ASV</string>
+    <string name="action_ASV">ASV</string>
+    <string name="action_KJV">KJV</string>
+    <string name="action_Webster">Webster</string>
+    <string name="action_World_English">World English</string>
+    <string name="next_chapter">Next Chapter</string>
+    <string name="previous_chapter">Previous Chapter</string>
+    <string name="search_chapter">Jump to Chapter</string>
+</resources>

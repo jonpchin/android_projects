@@ -1,0 +1,24 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.goplaychess.gobible.ReadBook">
+
+    <item
+        android:id="@+id/search_chapter"
+        android:icon="@drawable/ic_search_chapter"
+        android:title="@string/search_chapter"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/action_left"
+        android:icon="@drawable/ic_left_arrow"
+        android:title="@string/previous_chapter"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/action_right"
+        android:icon="@drawable/ic_right_arrow"
+        android:title="@string/next_chapter"
+        app:showAsAction="ifRoom"/>
+
+</menu>

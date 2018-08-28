@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Ble</string>
+    <string name="ble_not_supported">Bluetooth Low Energy is not supported.</string>
+</resources>

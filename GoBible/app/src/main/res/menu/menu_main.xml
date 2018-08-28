@@ -1,0 +1,29 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.goplaychess.gobible.ReadBook">
+
+    <item
+        android:id="@+id/action_ASV"
+        android:orderInCategory="100"
+        android:title="@string/action_ASV"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_KJV"
+        android:orderInCategory="100"
+        android:title="@string/action_KJV"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_Webster"
+        android:orderInCategory="100"
+        android:title="@string/action_Webster"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_World_English"
+        android:orderInCategory="100"
+        android:title="@string/action_World_English"
+        app:showAsAction="never" />
+</menu>

@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">claw_tank</string>
+    <string name="base">Base</string>
+    <string name="off">OFF</string>
+    <string name="left">Left</string>
+    <string name="claw">Claw</string>
+    <string name="motor">Motor</string>
+    <string name="right">Right</string>
+    <string name="angle">Angle</string>
+</resources>
