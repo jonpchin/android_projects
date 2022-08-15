@@ -30,6 +30,7 @@ public class ReadBook extends AppCompatActivity implements View.OnTouchListener 
     TextView textView;
     String bookTitle = ""; // or other values
     String bibleVersion = "ASV";
+    int textSize = 20;
     private GestureDetectorCompat gestureDetector;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,10 +101,16 @@ public class ReadBook extends AppCompatActivity implements View.OnTouchListener 
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_left && chapter > 1) {
+       if (id == R.id.plus) {
+           textSize++;
+           textView.setTextSize((textSize));
+           return true;
+
+       }else if (id == R.id.action_left && chapter > 1) {
             chapter--;
             loadNextChapter(chapter);
             return true;
+
         }else if(id == R.id.action_right && chapter < totalChapters){
             chapter++;
             loadNextChapter(chapter);
@@ -167,6 +174,7 @@ public class ReadBook extends AppCompatActivity implements View.OnTouchListener 
         }
         getSupportActionBar().setTitle(bookTitle + " " + target);
         textView.setText(stringBuilder.toString());
+
         chapter = target;
     }
 }

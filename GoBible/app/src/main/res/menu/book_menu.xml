@@ -4,6 +4,12 @@
     tools:context="com.goplaychess.gobible.ReadBook">
 
     <item
+        android:id="@+id/plus"
+        android:icon="@drawable/ic_plus"
+        android:title="@string/plus"
+        app:showAsAction="ifRoom"/>
+
+    <item
         android:id="@+id/search_chapter"
         android:icon="@drawable/ic_search_chapter"
         android:title="@string/search_chapter"
