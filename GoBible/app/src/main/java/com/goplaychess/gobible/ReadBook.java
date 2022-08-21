@@ -2,9 +2,7 @@ package com.goplaychess.gobible;
 
 import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
