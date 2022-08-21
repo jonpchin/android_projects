@@ -2,7 +2,9 @@ package com.goplaychess.gobible;
 
 import android.app.Activity;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -30,7 +32,6 @@ public class ReadBook extends AppCompatActivity implements View.OnTouchListener 
     TextView textView;
     String bookTitle = ""; // or other values
     String bibleVersion = "ASV";
-    int textSize = 20;
     private GestureDetectorCompat gestureDetector;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,11 +102,16 @@ public class ReadBook extends AppCompatActivity implements View.OnTouchListener 
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-       if (id == R.id.plus) {
-           textSize++;
-           textView.setTextSize((textSize));
-           return true;
+       if (id == R.id.plus && TextSize.textSize < 40) {
 
+           ++TextSize.textSize;
+           textView.setTextSize((TextSize.textSize));
+           return true;
+       } else  if (id == R.id.minus && TextSize.textSize > 10) {
+
+           --TextSize.textSize;
+           textView.setTextSize((TextSize.textSize));
+           return true;
        }else if (id == R.id.action_left && chapter > 1) {
             chapter--;
             loadNextChapter(chapter);
@@ -174,7 +180,7 @@ public class ReadBook extends AppCompatActivity implements View.OnTouchListener 
         }
         getSupportActionBar().setTitle(bookTitle + " " + target);
         textView.setText(stringBuilder.toString());
-
+        textView.setTextSize(TextSize.textSize);
         chapter = target;
     }
 }
