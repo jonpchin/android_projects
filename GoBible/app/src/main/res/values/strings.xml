@@ -4,6 +4,8 @@
     <string name="action_KJV">KJV</string>
     <string name="action_Webster">Webster</string>
     <string name="action_World_English">World English</string>
+    <string name="action_Dark_Theme">Dark Theme</string>
+    <string name="action_Light_Theme">Light Theme</string>
     <string name="plus">Enlarge Font</string>
     <string name="minus">Shrink Font</string>
     <string name="next_chapter">Next Chapter</string>

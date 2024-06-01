@@ -33,6 +33,4 @@
         android:title="@string/search_chapter"
         app:showAsAction="ifRoom"/>
 
-
-
 </menu>

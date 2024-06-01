@@ -2,6 +2,7 @@ package com.goplaychess.gobible;
 
 import android.content.Intent;
 import android.content.res.AssetManager;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -10,9 +11,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -27,6 +31,9 @@ public class MainActivity extends AppCompatActivity{
 
     ArrayAdapter<String> itemsAdapterSorted;
     String bibleVersion = "ASV";
+    ArrayList<String> sortedItems;
+    ArrayList<String> items;
+    boolean isDarkTheme = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +48,8 @@ public class MainActivity extends AppCompatActivity{
 //        mainButton = (Button) findViewById(R.id.main_button);
 //        mainButton.setOnClickListener(this);
 
-        ArrayList<String> items = new ArrayList<String>();
-        ArrayList<String> sortedItems = new ArrayList<>();
+        items = new ArrayList<String>();
+        sortedItems = new ArrayList<>();
 
         //dynamically adding books into arrayList
 //        AssetManager aMan = getApplicationContext().getAssets();
@@ -180,6 +187,7 @@ public class MainActivity extends AppCompatActivity{
                 b.putString("key", bookTitle);
                 b.putInt("total", total);
                 b.putString("version", bibleVersion);
+                b.putBoolean("theme", isDarkTheme);
                 intent.putExtras(b);
                 startActivity(intent);
             }
@@ -223,20 +231,90 @@ public class MainActivity extends AppCompatActivity{
             getSupportActionBar().setTitle("Go Bible ASV");
             return true;
         }
-        if (id == R.id.action_KJV) {
+        else if (id == R.id.action_KJV) {
             bibleVersion = "KJV";
             getSupportActionBar().setTitle("Go Bible KJV");
             return true;
         }
-        if (id == R.id.action_Webster) {
+        else if (id == R.id.action_Webster) {
             bibleVersion = "Webster";
             getSupportActionBar().setTitle("Go Bible Webster");
             return true;
         }
-        if (id == R.id.action_World_English) {
+        else if (id == R.id.action_World_English) {
             bibleVersion = "WorldEnglish";
             getSupportActionBar().setTitle("Go Bible WE");
             return true;
+        }else if (id == R.id.action_Dark_Theme){
+            RelativeLayout rl = (RelativeLayout)findViewById(R.id.relativelayoutListView);
+            rl.setBackgroundColor(Color.BLACK);
+            isDarkTheme = true;
+
+            itemsAdapterSorted =
+                    new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, sortedItems){
+                        @Override
+                        public View getView(int position, View convertView, ViewGroup parent) {
+                            View view =super.getView(position, convertView, parent);
+
+                            TextView textView=(TextView) view.findViewById(android.R.id.text1);
+
+                            /*YOUR CHOICE OF COLOR*/
+                            textView.setTextColor(Color.WHITE);
+
+                            return view;
+                        }
+                    };
+            itemsAdapter =
+                    new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items){
+                        @Override
+                        public View getView(int position, View convertView, ViewGroup parent) {
+                            View view =super.getView(position, convertView, parent);
+
+                            TextView textView=(TextView) view.findViewById(android.R.id.text1);
+
+                            /*YOUR CHOICE OF COLOR*/
+                            textView.setTextColor(Color.WHITE);
+
+                            return view;
+                        }
+                    };
+
+            listView.setAdapter(itemsAdapter);
+        }else if (id == R.id.action_Light_Theme){
+            RelativeLayout rl = (RelativeLayout)findViewById(R.id.relativelayoutListView);
+            rl.setBackgroundColor(Color.parseColor("#FAFAFA"));
+            isDarkTheme = false;
+
+            itemsAdapterSorted =
+                    new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, sortedItems){
+                        @Override
+                        public View getView(int position, View convertView, ViewGroup parent) {
+                            View view =super.getView(position, convertView, parent);
+
+                            TextView textView=(TextView) view.findViewById(android.R.id.text1);
+
+                            /*YOUR CHOICE OF COLOR*/
+                            textView.setTextColor(Color.BLACK);
+
+                            return view;
+                        }
+                    };
+            itemsAdapter =
+                    new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items){
+                        @Override
+                        public View getView(int position, View convertView, ViewGroup parent) {
+                            View view =super.getView(position, convertView, parent);
+
+                            TextView textView=(TextView) view.findViewById(android.R.id.text1);
+
+                            /*YOUR CHOICE OF COLOR*/
+                            textView.setTextColor(Color.BLACK);
+
+                            return view;
+                        }
+                    };
+
+            listView.setAdapter(itemsAdapter);
         }
         return super.onOptionsItemSelected(item);
     }

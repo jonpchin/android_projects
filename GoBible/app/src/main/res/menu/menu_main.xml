@@ -26,4 +26,16 @@
         android:orderInCategory="100"
         android:title="@string/action_World_English"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_Light_Theme"
+        android:orderInCategory="100"
+        android:title="@string/action_Light_Theme"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_Dark_Theme"
+        android:orderInCategory="100"
+        android:title="@string/action_Dark_Theme"
+        app:showAsAction="never" />
 </menu>

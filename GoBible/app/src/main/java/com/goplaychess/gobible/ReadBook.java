@@ -2,6 +2,7 @@ package com.goplaychess.gobible;
 
 import android.app.Activity;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.AlertDialog;
@@ -12,6 +13,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
@@ -30,6 +32,7 @@ public class ReadBook extends AppCompatActivity implements View.OnTouchListener 
     TextView textView;
     String bookTitle = ""; // or other values
     String bibleVersion = "ASV";
+    Boolean isDarkTheme = false;
     private GestureDetectorCompat gestureDetector;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +47,7 @@ public class ReadBook extends AppCompatActivity implements View.OnTouchListener 
             bookTitle = b.getString("key");
             totalChapters = b.getInt("total");
             bibleVersion = b.getString("version");
+            isDarkTheme = b.getBoolean("theme");
         }
         getSupportActionBar().setTitle(bookTitle + " " + 1);
 
@@ -70,8 +74,28 @@ public class ReadBook extends AppCompatActivity implements View.OnTouchListener 
             }
         };
 
+        if (isDarkTheme){
+            setDarkTheme();
+        }else {
+            setLightTheme();
+        }
+
         gestureDetector = new GestureDetectorCompat(getApplicationContext(), onSwipeListener);
         textView.setOnTouchListener(this);
+    }
+
+    public void setDarkTheme(){
+        textView.setTextColor(Color.WHITE);
+        textView.setBackgroundColor(Color.BLACK);
+        RelativeLayout rl = (RelativeLayout)findViewById(R.id.relativelayoutBook);
+        rl.setBackgroundColor(Color.BLACK);
+    }
+
+    public void setLightTheme(){
+        textView.setTextColor(Color.BLACK);
+        textView.setBackgroundColor(Color.parseColor("#FAFAFA"));
+        RelativeLayout rl = (RelativeLayout)findViewById(R.id.relativelayoutBook);
+        rl.setBackgroundColor(Color.parseColor("#FAFAFA"));
     }
 
     @Override
@@ -119,35 +143,36 @@ public class ReadBook extends AppCompatActivity implements View.OnTouchListener 
             chapter++;
             loadNextChapter(chapter);
             return true;
-        }else if(id == R.id.search_chapter){
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Search Chapter");
+        }else if(id == R.id.search_chapter) {
+           AlertDialog.Builder builder = new AlertDialog.Builder(this);
+           builder.setTitle("Search Chapter");
 
-            // Set up the input
-            final EditText input = new EditText(this);
-            // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
-            input.setInputType(InputType.TYPE_CLASS_NUMBER);
-            builder.setView(input);
+           // Set up the input
+           final EditText input = new EditText(this);
+           // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+           input.setInputType(InputType.TYPE_CLASS_NUMBER);
+           builder.setView(input);
 
-            // Set up the buttons
-            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    int specifiedChapter = Integer.parseInt(input.getText().toString());
-                    if(specifiedChapter > 0 && specifiedChapter <= totalChapters){
-                        loadNextChapter(specifiedChapter);
-                    }
+           // Set up the buttons
+           builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+               @Override
+               public void onClick(DialogInterface dialog, int which) {
+                   int specifiedChapter = Integer.parseInt(input.getText().toString());
+                   if (specifiedChapter > 0 && specifiedChapter <= totalChapters) {
+                       loadNextChapter(specifiedChapter);
+                   }
 
-                }
-            });
-            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.cancel();
-                }
-            });
+               }
+           });
+           builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+               @Override
+               public void onClick(DialogInterface dialog, int which) {
+                   dialog.cancel();
+               }
+           });
 
-            builder.show();
+           builder.show();
+
         }
         return super.onOptionsItemSelected(item);
     }
