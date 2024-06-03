@@ -157,11 +157,14 @@ public class ReadBook extends AppCompatActivity implements View.OnTouchListener 
            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                @Override
                public void onClick(DialogInterface dialog, int which) {
-                   int specifiedChapter = Integer.parseInt(input.getText().toString());
-                   if (specifiedChapter > 0 && specifiedChapter <= totalChapters) {
-                       loadNextChapter(specifiedChapter);
+                   try{
+                       int specifiedChapter = Integer.parseInt(input.getText().toString());
+                       if (specifiedChapter > 0 && specifiedChapter <= totalChapters) {
+                           loadNextChapter(specifiedChapter);
+                       }
+                   } catch (NumberFormatException e) {
+                       // not an integer!
                    }
-
                }
            });
            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
